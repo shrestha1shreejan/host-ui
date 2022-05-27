@@ -1,0 +1,25 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/lib-shared/src",
+  "prefix": "host-ui",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/lib-shared"],
+      "options": {
+        "jestConfig": "libs/lib-shared/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/lib-shared/**/*.ts",
+          "libs/lib-shared/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

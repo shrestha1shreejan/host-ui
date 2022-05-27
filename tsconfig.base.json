@@ -8,13 +8,16 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es2020",
     "module": "esnext",
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@host-ui/lib-shared": ["libs/lib-shared/src/index.ts"],
+      "@lib/lcommon": ["libs/lib-common/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

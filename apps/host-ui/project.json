@@ -4,17 +4,28 @@
   "prefix": "host-ui",
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "executor": "@nrwl/angular:webpack-browser",
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/host-ui",
         "index": "apps/host-ui/src/index.html",
         "main": "apps/host-ui/src/main.ts",
         "polyfills": "apps/host-ui/src/polyfills.ts",
         "tsConfig": "apps/host-ui/tsconfig.app.json",
-        "assets": ["apps/host-ui/src/favicon.ico", "apps/host-ui/src/assets"],
-        "styles": ["apps/host-ui/src/styles.css"],
-        "scripts": []
+        "assets": [
+          "apps/host-ui/src/favicon.ico",
+          "apps/host-ui/src/assets"
+        ],
+        "styles": [               
+          "apps/host-ui/src/styles.css"
+        ],
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/host-ui/webpack.config.js"
+        },
+        "commonChunk": false
       },
       "configurations": {
         "production": {
@@ -36,7 +47,10 @@
               "with": "apps/host-ui/src/environments/environment.prod.ts"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/host-ui/webpack.prod.config.js"
+          }
         },
         "development": {
           "buildOptimizer": false,
@@ -50,7 +64,7 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@nrwl/angular:webpack-server",
       "configurations": {
         "production": {
           "browserTarget": "host-ui:build:production"
@@ -59,23 +73,33 @@
           "browserTarget": "host-ui:build:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4200,
+        "publicHost": "http://localhost:4200"
+      }
     },
     "extract-i18n": {
-      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "executor": "ngx-build-plus:extract-i18n",
       "options": {
-        "browserTarget": "host-ui:build"
+        "browserTarget": "host-ui:build",
+        "extraWebpackConfig": "apps/host-ui/webpack.config.js"
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["apps/host-ui/**/*.ts", "apps/host-ui/**/*.html"]
+        "lintFilePatterns": [
+          "apps/host-ui/**/*.ts",
+          "apps/host-ui/**/*.html"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/host-ui"],
+      "outputs": [
+        "coverage/apps/host-ui"
+      ],
       "options": {
         "jestConfig": "apps/host-ui/jest.config.ts",
         "passWithNoTests": true

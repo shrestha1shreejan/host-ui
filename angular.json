@@ -3,6 +3,8 @@
   "version": 2,
   "projects": {
     "host-ui": "apps/host-ui",
-    "host-ui-e2e": "apps/host-ui-e2e"
+    "host-ui-e2e": "apps/host-ui-e2e",
+    "lib-common": "libs/lib-common",
+    "lib-shared": "libs/lib-shared"
   }
 }

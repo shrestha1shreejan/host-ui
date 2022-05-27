@@ -1,1 +1,17 @@
-<host-ui-nx-welcome></host-ui-nx-welcome>
+<h1>Dating app</h1>
+<div > 
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th> 
+                <th>Username</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of users">
+                <td>{{item.id}}</td>
+                <td>{{item.username}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,27 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/lib-common/src",
+  "prefix": "host-ui",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/libs/lib-common"
+      ],
+      "options": {
+        "jestConfig": "libs/lib-common/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/lib-common/**/*.ts",
+          "libs/lib-common/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
