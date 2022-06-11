@@ -1,13 +1,14 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from '@angular/core';
 import { map, ReplaySubject } from 'rxjs';
+import { environment } from '../../environments/environment';
 import { User } from '../_models/user';
 
 @Injectable({
 		providedIn: 'root'
 })
 export class AccountService {
-		baseUrl = "https://localhost:7234/api/";
+		baseUrl = environment.apiUrl;
 		
 		/// using ReplaySubject to store current user value and replay the old value to the subscriber
 		private currentUserSource = new ReplaySubject<User | null>(1);
