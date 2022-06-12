@@ -4,6 +4,7 @@
 @import "~bootswatch/dist/Cosmo/bootstrap.css";
 @import "~font-awesome/css/font-awesome.css";
 @import "~ngx-toastr/toastr.css";
+@import "~ngx-spinner/animations/ball-scale-multiple.css";
 
 .tab-panel {
     border: 1px solid rgb(23, 16, 111);

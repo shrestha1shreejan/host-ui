@@ -1,3 +1,5 @@
+import { LoadingInterceptor } from "./_interceptors/loading.interceptor";
+import { MemberEditComponent } from "./members/member-edit/member-edit.component";
 import { JwtInterceptor } from "./_interceptors/jwt.interceptor";
 import { MemberCardComponent } from "./members/member-card/member-card.component";
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
@@ -20,6 +22,7 @@ import { SharedModule } from './_modules/shared.module';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,7 @@ import { MemberDetailComponent } from './members/member-detail/member-detail.com
     MemberListComponent,
     MemberDetailComponent,
     MemberCardComponent,
+    MemberEditComponent,
     ListsComponent,
     MessagesComponent,
     NotFoundComponent,
@@ -43,10 +47,12 @@ import { MemberDetailComponent } from './members/member-detail/member-detail.com
     BrowserAnimationsModule,
     FormsModule,
     SharedModule,
+    NgxSpinnerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }, //multi: true adds the interceptor to existing angular interceptor instead of replacing it
-    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
   ],
   bootstrap: [AppComponent],
 })
