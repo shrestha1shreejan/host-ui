@@ -1,0 +1,14 @@
+<div class="form-group">
+	<input [class.is-invalid]="ngControl.touched && ngControl.invalid" type={{type}} class="form-control"
+		[formControl]="helperService.convertToFormControl(ngControl.control)" placeholder={{label}}>
+	<div class="invalid-feedback" *ngIf="ngControl?.control?.hasError('required')">Please enter a {{label}}</div>
+	<div class="invalid-feedback" *ngIf="ngControl?.control?.hasError('minlength')">
+		{{label}} must be atleast {{ngControl.control?.errors?.['minlength']?.requiredLength}}
+	</div>
+	<div class="invalid-feedback" *ngIf="ngControl?.control?.hasError('maxlength')">
+		{{label}} must be atmost {{ngControl.control?.errors?.['maxlength']?.requiredLength}}
+	</div>
+	<div class="invalid-feedback" *ngIf="ngControl?.control?.hasError('passwordMismatch')">
+		Password do not match
+	</div>
+</div>

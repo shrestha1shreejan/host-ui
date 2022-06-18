@@ -1,0 +1,15 @@
+<div class="form-group">
+  <input 
+  [class.is-invalid]="ngControl.touched && ngControl.invalid" 
+  class="form-control"
+  [formControl]="helperService.convertToFormControl(ngControl.control)" 
+  placeholder="{{label}}"
+  type="text"
+  bsDatepicker
+  [bsConfig]="bsConfig"
+  [maxDate]="maxDate"
+  >
+  <div class="invalid-feedback" *ngIf="ngControl?.control?.hasError('required')">
+		{{label}} do not match
+	</div>
+</div>
