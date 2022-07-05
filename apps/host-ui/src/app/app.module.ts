@@ -1,3 +1,4 @@
+import { MemberMessagesComponent } from "./members/member-messages/member-messages.component";
 import { DateInputComponent } from "./_forms/date-input/date-input.component";
 import { TextInputComponent } from "./_forms/text-input/text-input.component";
 import { PhotoEditorComponent } from "./members/photo-editor/photo-editor.component";
@@ -38,6 +39,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     MemberDetailComponent,
     MemberCardComponent,
     MemberEditComponent,
+    MemberMessagesComponent,
     PhotoEditorComponent,
     ListsComponent,
     MessagesComponent,
