@@ -10,6 +10,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { FileUploadModule } from 'ng2-file-upload';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { TimeagoModule } from 'ngx-timeago';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [],
@@ -22,6 +23,7 @@ import { TimeagoModule } from 'ngx-timeago';
     ButtonsModule.forRoot(),
 		TooltipModule.forRoot(),	
     TabsModule.forRoot(),	
+    ModalModule.forRoot(),
     NgxGalleryModule,
     FileUploadModule,
 		ToastrModule.forRoot({
@@ -37,6 +39,7 @@ import { TimeagoModule } from 'ngx-timeago';
     ToastrModule,
     TooltipModule,
     TabsModule,
+    ModalModule,
     NgxGalleryModule,
     FileUploadModule 
   ]

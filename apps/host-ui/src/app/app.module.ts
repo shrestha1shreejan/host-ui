@@ -1,3 +1,8 @@
+import { RolesModalComponent } from "./modals/roles-modal/roles-modal.component";
+import { UserManagementComponent } from "./admin/user-management/user-management.component";
+import { PhotoManagementComponent } from "./admin/photo-management/photo-management.component";
+import { HasRoleDirective } from "./_directives/has-role.directive";
+import { AdminPanelComponent } from "./admin/admin-panel/admin-panel.component";
 import { MemberMessagesComponent } from "./members/member-messages/member-messages.component";
 import { DateInputComponent } from "./_forms/date-input/date-input.component";
 import { TextInputComponent } from "./_forms/text-input/text-input.component";
@@ -40,6 +45,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     MemberCardComponent,
     MemberEditComponent,
     MemberMessagesComponent,
+    AdminPanelComponent,
     PhotoEditorComponent,
     ListsComponent,
     MessagesComponent,
@@ -47,6 +53,10 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     TextInputComponent,
     DateInputComponent,
     ServerErrorComponent,
+    HasRoleDirective,
+    PhotoManagementComponent,
+    UserManagementComponent,
+    RolesModalComponent
   ],
   imports: [
     BrowserModule,
