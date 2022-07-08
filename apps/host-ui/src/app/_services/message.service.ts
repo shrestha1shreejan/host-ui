@@ -1,3 +1,4 @@
+import { Group } from "./../_models/group";
 import { User } from "./../_models/user";
 import { HubConnection, HubConnectionBuilder } from "@microsoft/signalr";
 import { environment } from "./../../environments/environment";
@@ -46,6 +47,20 @@ export class MessageService {
 			});
 		})
 		
+		// /check the updated group and mark the messages
+		/// as read if the user in the group has some messages related to this group
+		this.hubConnection.on('UpdatedGroup', (group: Group) => {
+			if (group.connections.some(x => x.username === otherUsername)) {
+				this.messageThread$.pipe(take(1)).subscribe(messages => {
+					messages.forEach(message => {
+						if(!message.dateRead) {
+							message.dateRead = new Date(Date.now())
+						}
+					});
+					this.messageThreadSource.next([...messages]);
+				});
+			}
+		});
 	}
 
 	/**
