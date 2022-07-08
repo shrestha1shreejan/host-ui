@@ -33,11 +33,16 @@ export class PresenceService {
 
 		// the method name eg UserIsOnline should exactly match with that in server	
 		this.hubConnection.on('UserIsOnline', username => {
-			this.tostr.info(username + ' has connected' );
+			// this.tostr.info(username + ' has connected' );
+			this.onlineUsers$.pipe(take(1)).subscribe(usernames => {
+				this.onlineUserSource.next([...usernames, username]);
+			})
 		});
 
 		this.hubConnection.on('UserIsOffline', username => {
-			this.tostr.warning(username + ' has disconnected' );
+			this.onlineUsers$.pipe(take(1)).subscribe(usernames => {
+				this.onlineUserSource.next([...usernames.filter(x =>x !== username)]);
+			})
 		});
 
 		this.hubConnection.on('GetOnlineUsers', (usernames: string[])=> {
