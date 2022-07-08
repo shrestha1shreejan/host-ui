@@ -1,3 +1,4 @@
+import { ConfirmDialogComponent } from "./modals/confirm-dialog/confirm-dialog.component";
 import { RolesModalComponent } from "./modals/roles-modal/roles-modal.component";
 import { UserManagementComponent } from "./admin/user-management/user-management.component";
 import { PhotoManagementComponent } from "./admin/photo-management/photo-management.component";
@@ -56,7 +57,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     HasRoleDirective,
     PhotoManagementComponent,
     UserManagementComponent,
-    RolesModalComponent
+    RolesModalComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
