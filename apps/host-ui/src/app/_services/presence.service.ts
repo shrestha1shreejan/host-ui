@@ -1,9 +1,10 @@
+import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import { User } from '../_models/user';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, take } from "rxjs";
 
 @Injectable({
 	providedIn: 'root'
@@ -15,7 +16,7 @@ export class PresenceService {
 	private onlineUserSource = new BehaviorSubject<string[]>([]);
 	onlineUsers$ = this.onlineUserSource.asObservable();
 
-	constructor(private tostr: ToastrService) { }
+	constructor(private tostr: ToastrService, private router: Router) { }
 
 	// creating hub connection (should be called usually when application starts and user logs in or registers)
 	createHubConnection(user: User) {
@@ -42,6 +43,13 @@ export class PresenceService {
 		this.hubConnection.on('GetOnlineUsers', (usernames: string[])=> {
 			this.onlineUserSource.next(usernames); /// sending event to the behavior subject
 		});
+
+		this.hubConnection.on('NewMessageReceived', ({username, knownAs})=> {
+			this.tostr.info(knownAs + ' has sent you a new message !!')
+			.onTap
+			.pipe(take(1))
+			.subscribe(() => this.router.navigateByUrl('/members/' + username + '?tab=3')) 
+		})
 	}
 
 	// method to stop hubConnection (should be called during logout)
